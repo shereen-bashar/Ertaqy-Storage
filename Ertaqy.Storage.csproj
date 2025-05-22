@@ -5,7 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+	<ItemGroup>
+		<!--<ProjectReference Include="..\Ertaqy.Infrastructure.ClientAuthentication\Ertaqy.Infrastructure.ClientAuthentication.csproj" />-->
+		<PackageReference Include="Ertaqy.Infrastructure.ClientAuthentication" Version="1.0.1" />
 
+	</ItemGroup>
   <ItemGroup>
     <PackageReference Include="SkiaSharp" Version="2.88.8" />
   </ItemGroup>
