@@ -4,10 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <InvariantGlobalization>false</InvariantGlobalization>
+	  <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
 	<ItemGroup>
 		<!--<ProjectReference Include="..\Ertaqy.Infrastructure.ClientAuthentication\Ertaqy.Infrastructure.ClientAuthentication.csproj" />-->
-		<PackageReference Include="Ertaqy.Infrastructure.ClientAuthentication" Version="1.0.1" />
+		<PackageReference Include="Ertaqy.Infrastructure.ClientAuthentication" Version="1.0.3" />
 
 	</ItemGroup>
   <ItemGroup>

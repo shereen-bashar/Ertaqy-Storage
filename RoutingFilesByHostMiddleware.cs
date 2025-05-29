@@ -50,15 +50,39 @@ public class RoutingFilesByHostMiddleware
 
         // Extract the hostname from the request URL
         string hostname = context.Request.Host.Host;
+        bool rewrotePath = false;
 
         // Check if the requested URL contains the routing folder
-        if (requestedPath.StartsWith(_urlpath))
+        if (requestedPath.StartsWith(_urlpath, StringComparison.OrdinalIgnoreCase))
         {
             // Prepend the hostname to the requested path, excluding the routing folder
             string newPath = $"/{_physicalFolder}/{hostname}{requestedPath.Substring(_urlpath.Length)}";
 
             // Update the request path
             context.Request.Path = newPath;
+            rewrotePath = true;
+
+        }
+        // Handle CORS headers conditionally
+        if (rewrotePath)
+        {
+            context.Response.OnStarting(() =>
+            {
+                context.Response.Headers["Access-Control-Allow-Origin"] = $"https://{hostname}";
+                context.Response.Headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS";
+                context.Response.Headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization";
+                return Task.CompletedTask;
+            });
+        }
+        else
+        {
+            context.Response.OnStarting(() =>
+            {
+                context.Response.Headers["Access-Control-Allow-Origin"] = "*";
+                context.Response.Headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS";
+                context.Response.Headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization";
+                return Task.CompletedTask;
+            });
         }
 
         // Call the next middleware in the pipeline

@@ -28,6 +28,13 @@ builder.Services.AddAuthentication(options =>
 
    );
 ;
+builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
+              builder =>
+              {
+                  builder.AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowAnyOrigin();
+              }));
 
 // Configuration settings
 //builder.Configuration
@@ -146,6 +153,7 @@ var rewriteOptionsSecure = new RewriteOptions()
 app.UseRewriter(rewriteOptions);
 app.UseRewriter(rewriteOptionsSecure);
 
+app.UseCors();
 app.UseStaticFiles();
 
 app.UseRouting();
