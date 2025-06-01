@@ -75,19 +75,20 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-////  host/dl/* =>  wwwroot/_files/{host}/*
+////  host/dl/* =>  wwwroot/_byhost/{host}/*
 // File routing settings
-var filesUrlpath = builder.Configuration["FilesRouting:urlpath"] ?? "files";
-var filesLocalFolder = builder.Configuration["FilesRouting:localFolder"] ?? "_files";
+const string multiDomainsUrlPath = "d/";
+var singleDomainUrlPath = builder.Configuration["FilesRouting:urlpath"] ?? "files";
+var filesLocalFolder = builder.Configuration["FilesRouting:localFolder"] ?? "_byhost";
 
-// Prevent direct access to wwwroot/_files/{domain}/
+// Prevent direct access to wwwroot/_byhost/{domain}/
 
- app.Use(async (context, next) =>
+app.Use(async (context, next) =>
 {
     var path = context.Request.Path.Value;
 
-    // Block direct access to anything under /_files/
-    if (path.StartsWith("/_files"))
+    // Block direct access to anything under /_byhost/
+    if (path.StartsWith("/"+ filesLocalFolder))
     {
         context.Response.StatusCode = 403; // Forbidden
         await context.Response.WriteAsync("Access Denied.");
@@ -101,7 +102,7 @@ app.Use(async (context, next) =>
 {
     var path = context.Request.Path.Value;
 
-    if (path.StartsWith("/_files"))
+    if (path.StartsWith("/"+ filesLocalFolder))
     {
         if (!context.User.Identity.IsAuthenticated)
         {
@@ -115,7 +116,7 @@ app.Use(async (context, next) =>
 });
 
 // Ensure paths start with correct characters
-if (!filesUrlpath.StartsWith("/")) filesUrlpath = "/" + filesUrlpath;
+if (!singleDomainUrlPath.StartsWith("/")) singleDomainUrlPath = "/" + singleDomainUrlPath;
 if (!filesLocalFolder.StartsWith("\\")) filesLocalFolder = "\\" + filesLocalFolder;
 
 app.Use(async (context, next) =>
@@ -136,22 +137,22 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// host/files/.. => rewrite to _files/host/...
+// host/files/.. => rewrite to _byhost/host/...
 // Middleware for routing files by host
-app.UseMiddleware<RoutingFilesByHostMiddleware>(filesUrlpath, filesLocalFolder);
+app.UseMiddleware<RoutingFilesByHostMiddleware>(singleDomainUrlPath, multiDomainsUrlPath, filesLocalFolder);
 app.UseImageResizeMiddleware();
 
 // Rewrite rules
-// app.ertaqy.com/d/{domain}/* =>  wwwroot/_files/{domain}/*
-  
-var rewriteOptions = new RewriteOptions()
-    .AddRewrite(@"^d/(.*)$", $"{filesLocalFolder}/$1", skipRemainingRules: true); // Adjust the regex pattern according to your needs
-var rewriteOptionsSecure = new RewriteOptions()
-    .AddRewrite(@"^d/secure/(.*)$", $"{filesLocalFolder}/$1", skipRemainingRules: true); // Adjust the regex pattern according to your needs
-//  host/dl/* =>  wwwroot/_files/{host}/*
+// storage.ertaqy.com/d/{domain}/* =>  wwwroot/_byhost/{domain}/*
 
-app.UseRewriter(rewriteOptions);
-app.UseRewriter(rewriteOptionsSecure);
+//var rewriteOptions = new RewriteOptions()
+//    .AddRewrite(@"^d/(.*)$", $"{filesLocalFolder}/$1", skipRemainingRules: true); // Adjust the regex pattern according to your needs
+//var rewriteOptionsSecure = new RewriteOptions()
+//    .AddRewrite(@"^d/secure/(.*)$", $"{filesLocalFolder}/$1", skipRemainingRules: true); // Adjust the regex pattern according to your needs
+//  host/dl/* =>  wwwroot/_byhost/{host}/*
+
+//app.UseRewriter(rewriteOptions);
+//app.UseRewriter(rewriteOptionsSecure);
 
 app.UseCors();
 app.UseStaticFiles();

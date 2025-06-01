@@ -17,56 +17,56 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\_files\localhost\images\Imagethum\" />
-    <Folder Include="wwwroot\_files\secure\localhost\images\Imagethum\" />
+    <Folder Include="wwwroot\_byhost\localhost\images\Imagethum\" />
+    <Folder Include="wwwroot\_byhost\secure\localhost\images\Imagethum\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\_files\secure\domain.com\site.css">
+    <Content Update="wwwroot\_byhost\secure\domain.com\site.css">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\ertaqy.com\siteauth.css">
+    <Content Update="wwwroot\_byhost\secure\ertaqy.com\siteauth.css">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\Host.com\site.css">
+    <Content Update="wwwroot\_byhost\secure\Host.com\site.css">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\images\1.PNG">
+    <Content Update="wwwroot\_byhost\secure\localhost\images\1.PNG">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\images\2.jpg">
+    <Content Update="wwwroot\_byhost\secure\localhost\images\2.jpg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\images\services.JPG">
+    <Content Update="wwwroot\_byhost\secure\localhost\images\services.JPG">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\image_thumb\1_100.PNG">
+    <Content Update="wwwroot\_byhost\secure\localhost\image_thumb\1_100.PNG">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\image_thumb\1_200.PNG">
+    <Content Update="wwwroot\_byhost\secure\localhost\image_thumb\1_200.PNG">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\image_thumb\1_50.PNG">
+    <Content Update="wwwroot\_byhost\secure\localhost\image_thumb\1_50.PNG">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\image_thumb\2_200.jpg">
+    <Content Update="wwwroot\_byhost\secure\localhost\image_thumb\2_200.jpg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\site.css">
+    <Content Update="wwwroot\_byhost\secure\localhost\site.css">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\_files\secure\localhost\site.js">
+    <Content Update="wwwroot\_byhost\secure\localhost\site.js">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
