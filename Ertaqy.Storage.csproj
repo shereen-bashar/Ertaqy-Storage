@@ -7,12 +7,8 @@
 	  <InvariantGlobalization>false</InvariantGlobalization>
 	  <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
-	<ItemGroup>
-		<!--<ProjectReference Include="..\Ertaqy.Infrastructure.ClientAuthentication\Ertaqy.Infrastructure.ClientAuthentication.csproj" />-->
-		<PackageReference Include="Ertaqy.Infrastructure.ClientAuthentication" Version="1.0.3" />
-
-	</ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Ertaqy.Infrastructure.ClientAuthentication" Version="1.0.10" />
     <PackageReference Include="SkiaSharp" Version="2.88.8" />
   </ItemGroup>
 

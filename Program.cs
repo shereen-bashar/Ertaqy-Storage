@@ -16,9 +16,9 @@ builder.Services.AddInfrastructureAuthenticationLayer(builder.Configuration);
 builder.Services.AddAuthentication(options =>
 {
 
-    // options.DefaultAuthenticateScheme = "_USR2"; // For authenticating cookies
+    // options.DefaultAuthenticateScheme = "_TKT"; // For authenticating cookies
     options.DefaultChallengeScheme = "jwt"; // For handling API/WebSocket challenges
-    options.DefaultScheme = "_USR2"; // Set cookies as the default scheme
+    options.DefaultScheme = "_TKT"; // Set cookies as the default scheme
 
 
 }).AddClientCookieAuthentication(
@@ -54,7 +54,7 @@ builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
 
 //// Read CookieSettings from configuration
 //var cookieLoginPath = builder.Configuration["CookieSettings:LoginPath"] ?? "/account/login";
-//var cookieName = builder.Configuration["CookieSettings:CookieName"] ?? "_USR2";
+//var cookieName = builder.Configuration["CookieSettings:CookieName"] ?? "_TKT";
 
 
 // Add services to the container.
