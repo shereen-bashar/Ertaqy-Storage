@@ -8,7 +8,7 @@
 	  <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Ertaqy.Infrastructure.ClientAuthentication" Version="1.0.15" />
+    <PackageReference Include="Ertaqy.Infrastructure.ClientAuthentication" Version="1.0.16" />
     <PackageReference Include="SkiaSharp" Version="2.88.8" />
   </ItemGroup>
 
